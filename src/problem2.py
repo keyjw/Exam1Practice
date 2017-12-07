@@ -31,7 +31,7 @@ import rosegraphics as rg
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_problem2a()
-    # run_test_problem2b()
+    run_test_problem2b()
 
 
 def run_test_problem2a():
@@ -126,6 +126,7 @@ def problem2a(circle, rectangle, window):
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
 
+
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
     print()
@@ -187,9 +188,18 @@ def problem2b(rect, n, delta, win):
       :type delta:  int
       :type win:    rg.RoseWindow
     """
+    rect.attach_to(win)
+    width = rect.get_upper_left_corner()
+    height = rect.get_lower_right_corner()
 
+    for k in range(n):
+        point1 = rg.Point(width.x - (delta * k), width.y - (delta * k))
+        point2 = rg.Point(height.x + (delta * k), height.y + (delta * k))
+        rectangle = rg.Rectangle(point1, point2)
+        rectangle.attach_to(win)
+    win.render()
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
